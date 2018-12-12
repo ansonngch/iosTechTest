@@ -1,5 +1,5 @@
 # Objective
-Create a two views iPhone application that:
+Create an iPhone application that:
 1. Shows a list of pictures
 2. Plays a video preview.
 
@@ -17,19 +17,19 @@ Create a two views iPhone application that:
 1. Create a simple feed view with:
  - Collection view:
     * 3 columns per row
-    * Edge insets = 0
-    * Line spacing = 3
-    * Item spacing = 3
+    * Spacing between 2 cells = 3pt
+    * Zero edge insets
  - Collection view cell:
     * Contains only single image view
-    * Content mode = aspect fit
+    * Stretch the image and cropping off any parts that don't fit the frame
+    * Maintain image original aspect ratio
 
 2. Populate collection view with data from this endpoint: https://pixabay.com/api/?key=10961674-bf47eb00b05f514cdd08f6e11&q=flower
- - Achieve smooth scrolling as much as possible
  - Show image thumbnail by using 'previewURL' in the returned json result.
  - Handle pagination for up to 3 pages. Refer to https://pixabay.com/api/docs/#api_search_images for API documentation.
  - Show loading indicator when thumbnail is downloading
- - Cache thumbnails for good user experience
+ - Achieve smooth scrolling
+ - Cache thumbnails
 
 ## VideoPreviewViewController
 1. Create a simple UI with:
@@ -37,8 +37,14 @@ Create a two views iPhone application that:
     * Below navigation bar
     * Equal width as parent view
     * 16:9 aspect ratio
+ - Video playback progress bar:
+    * Bottom of video preview view
+ - Video duration label:
+    * Above progress bar
+    * 10pt from parent view's leading
+    * Format: 0.00s
  - Start button:
-    * 15pt below 'Video preview view'
+    * 15pt below video preview view
     * Stay horizontally center with parent view
     * 'Start' as its text
     * Rounded corner, corner radius = 8
@@ -51,7 +57,10 @@ Create a two views iPhone application that:
 3. Merge the audio file you just downloaded with the video file included in the project by using AVFoundation
     * Video output should be in the correct orientation: landscape
     * Video output should have same duration as source video or audio, whichever is shorter
-    * Play preview immediately after the composition is finished.
+    * Update video duration label with output duration
+
+4. Play preview immediately after the composition is finished
+    * Update progress with 0.05s interval
 
 # Version control requirement
 1. Create a private repo at [Bitbucket](https://bitbucket.org/) or [Gitlab](https://gitlab.com/).
