@@ -24,9 +24,10 @@ Create a two views iPhone application that:
     * Contains only single image view
     * Content mode = aspect fit
 
-2. Populate collection view with data from this endpoint: https://pixabay.com/api/?key=10961674-bf47eb00b05f514cdd08f6e11
+2. Populate collection view with data from this endpoint: https://pixabay.com/api/?key=10961674-bf47eb00b05f514cdd08f6e11&q=flower
  - Achieve smooth scrolling as much as possible
  - Show image thumbnail by using 'previewURL' in the returned json result.
+ - Handle pagination for up to 3 pages. Refer to https://pixabay.com/api/docs/#api_search_images for API documentation.
  - Show loading indicator when thumbnail is downloading
  - Cache thumbnails for good user experience
 
