@@ -65,3 +65,6 @@ Create an iPhone application that:
 # Version control requirement
 1. Create a private repo at [Bitbucket](https://bitbucket.org/) or [Gitlab](https://gitlab.com/).
 2. Make your commit often with short and meaningful commit message. 
+3. Add me as your project member if you are using:
+ - Gitlab: tsukisa
+ - Bitbucket: casey_tsukisa
