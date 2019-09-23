@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EB6F03D2338E40B000E53B3 /* PictureFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F03C2338E40B000E53B3 /* PictureFeedCollectionViewCell.swift */; };
+		3EB6F03F2338E451000E53B3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F03E2338E451000E53B3 /* Extensions.swift */; };
 		C9036EB121BF9AB500E432BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9036EB021BF9AB500E432BB /* AppDelegate.swift */; };
 		C9036EB321BF9AB500E432BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9036EB221BF9AB500E432BB /* ViewController.swift */; };
 		C9036EB621BF9AB500E432BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9036EB421BF9AB500E432BB /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3EB6F03C2338E40B000E53B3 /* PictureFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		3EB6F03E2338E451000E53B3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C9036EAD21BF9AB500E432BB /* iOSTechnicalTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSTechnicalTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9036EB021BF9AB500E432BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9036EB221BF9AB500E432BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +45,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EB6F03A2338E3F1000E53B3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3EB6F03B2338E3FA000E53B3 /* CollectionViewCells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3EB6F03B2338E3FA000E53B3 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				3EB6F03C2338E40B000E53B3 /* PictureFeedCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
 		C9036EA421BF9AB500E432BB = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +80,7 @@
 		C9036EAF21BF9AB500E432BB /* iOSTechnicalTest */ = {
 			isa = PBXGroup;
 			children = (
+				3EB6F03A2338E3F1000E53B3 /* Views */,
 				C9036EB021BF9AB500E432BB /* AppDelegate.swift */,
 				C9036EB221BF9AB500E432BB /* ViewController.swift */,
 				C9873EEB21BF9BAC004674FE /* PictureFeedCollectionViewController.swift */,
@@ -69,6 +90,7 @@
 				C9036EB921BF9AB700E432BB /* LaunchScreen.storyboard */,
 				C9873EE821BF9B39004674FE /* Movie.mp4 */,
 				C9036EBC21BF9AB700E432BB /* Info.plist */,
+				3EB6F03E2338E451000E53B3 /* Extensions.swift */,
 			);
 			path = iOSTechnicalTest;
 			sourceTree = "<group>";
@@ -146,6 +168,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9873EEC21BF9BAC004674FE /* VideoPreviewViewController.swift in Sources */,
+				3EB6F03F2338E451000E53B3 /* Extensions.swift in Sources */,
+				3EB6F03D2338E40B000E53B3 /* PictureFeedCollectionViewCell.swift in Sources */,
 				C9036EB321BF9AB500E432BB /* ViewController.swift in Sources */,
 				C9036EB121BF9AB500E432BB /* AppDelegate.swift in Sources */,
 				C9873EED21BF9BAC004674FE /* PictureFeedCollectionViewController.swift in Sources */,

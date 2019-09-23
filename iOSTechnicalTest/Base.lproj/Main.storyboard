@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3H3-49-vyw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3H3-49-vyw">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,19 +73,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Tjj-CM-eQ5">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="153" height="153"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="s6M-YZ-8Z1">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PictureFeedCollectionViewCell" id="s6M-YZ-8Z1" customClass="PictureFeedCollectionViewCell" customModule="iOSTechnicalTest" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="153" height="153"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="153" height="153"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dxw-9k-WnK">
+                                            <rect key="frame" x="0.0" y="0.0" width="153" height="153"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Dxw-9k-WnK" secondAttribute="bottom" id="4uA-7k-gap"/>
+                                    <constraint firstItem="Dxw-9k-WnK" firstAttribute="leading" secondItem="s6M-YZ-8Z1" secondAttribute="leading" id="Aax-ZH-VK1"/>
+                                    <constraint firstItem="Dxw-9k-WnK" firstAttribute="top" secondItem="s6M-YZ-8Z1" secondAttribute="top" id="Ohi-61-uMG"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dxw-9k-WnK" secondAttribute="trailing" id="Xrl-fO-90t"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imgPicture" destination="Dxw-9k-WnK" id="cZS-mo-zde"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -96,7 +110,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZh-Zm-oVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-394" y="918"/>
+            <point key="canvasLocation" x="-394.39999999999998" y="917.99100449775119"/>
         </scene>
         <!--Video Preview View Controller-->
         <scene sceneID="uUS-xs-we0">
