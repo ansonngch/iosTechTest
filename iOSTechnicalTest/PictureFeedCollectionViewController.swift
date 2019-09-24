@@ -10,36 +10,43 @@ import UIKit
 
 class PictureFeedCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    let viewModel = PictureFeedViewModel()
+    var indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let parameters: [String: Any] = ["page": 1]
-        APIManager.sharedInstance.sendJSONRequest(method: .get, path: APIManager.Router.getImage, parameters: parameters) { (apiResponse, error) in
-            
+        viewModel.onLoadingChange = {[weak self] (isLoading) in
+            isLoading ? self?.indicator.startAnimating() : self?.indicator.stopAnimating()
         }
+        
+        viewModel.dataLoaded = {[weak self] in
+            self?.collectionView.reloadData()
+        }
+        
+        setupLoader()
+        viewModel.loadData(isReload: false)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    
+    func setupLoader() {
+        indicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        indicator.center = view.center
+        indicator.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+        self.view.addSubview(indicator)
+        self.view.bringSubviewToFront(indicator)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
-    */
-
-    // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 8
+        return viewModel.getTotalCount()
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: PictureFeedCollectionViewCell.className, for: indexPath) as? PictureFeedCollectionViewCell)!
 
+        let data = viewModel.getDataFor(item: indexPath.row)
+        cell.updateView(data: data)
         return cell
     }
 
@@ -54,35 +61,14 @@ class PictureFeedCollectionViewController: UICollectionViewController, UICollect
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 3
     }
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 3
     }
-    */
-
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.getTotalCount() - 1 {
+            viewModel.loadData(isReload: true)
+        }
+    }
 }

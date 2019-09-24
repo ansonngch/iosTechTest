@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PictureFeedCollectionViewCell: UICollectionViewCell {
     
@@ -20,6 +21,13 @@ class PictureFeedCollectionViewCell: UICollectionViewCell {
     
     private func setupView() {
         self.layer.cornerRadius = 8
-        self.backgroundColor = .red
+        self.imgPicture.contentMode = .scaleAspectFill
+        self.imgPicture.clipsToBounds = true
+    }
+    
+    func updateView(data: Hits) {
+        if let url = URL(string: data.previewURL ?? "") {
+            self.imgPicture.kf.setImage(with: url)
+        }
     }
 }

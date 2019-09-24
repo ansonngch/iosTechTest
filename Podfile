@@ -11,20 +11,3 @@ target 'iOSTechnicalTest' do
   pod 'Kingfisher', '~> 5.0.0'
 
 end
-
-post_install do |installer|
-    swift42Targets = ['Kingfisher']
-    
-    installer.pods_project.targets.each  do |target|
-        if swift42Targets.include? target.name
-            target.build_configurations.each  do |config|
-                config.build_settings['ENABLE_BITCODE'] = 'NO'
-                config.build_settings['SWIFT_VERSION'] = '4.2'
-            end
-            else
-            target.build_configurations.each  do |config|
-                config.build_settings['ENABLE_BITCODE'] = 'NO'
-            end
-        end
-    end
-end
