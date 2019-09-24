@@ -13,7 +13,10 @@ class PictureFeedCollectionViewController: UICollectionViewController, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let parameters: [String: Any] = ["page": 1]
+        APIManager.sharedInstance.sendJSONRequest(method: .get, path: APIManager.Router.getImage, parameters: parameters) { (apiResponse, error) in
+            
+        }
     }
 
     /*

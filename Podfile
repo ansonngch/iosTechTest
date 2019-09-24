@@ -6,5 +6,7 @@ target 'iOSTechnicalTest' do
   use_frameworks!
 
   # Pods for iOSTechnicalTest
+  pod 'Alamofire', '~> 4.8.0'
+  pod 'SwiftyJSON', '~> 4.2.0'
 
 end
