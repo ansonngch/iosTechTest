@@ -14,6 +14,8 @@
 		3EB6F0432338E9D9000E53B3 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F0422338E9D9000E53B3 /* APIManager.swift */; };
 		3EB6F0452338E9E9000E53B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB6F0442338E9E9000E53B3 /* Constants.swift */; };
 		3EE0A995233A153F005CFE0D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EE0A994233A153F005CFE0D /* Kingfisher.framework */; };
+		3EE0A998233A34C3005CFE0D /* VideoPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE0A997233A34C3005CFE0D /* VideoPreviewViewModel.swift */; };
+		3EE0A99A233A39AA005CFE0D /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE0A999233A39AA005CFE0D /* VideoPlayerView.swift */; };
 		6646B6BF029F08138780C6C6 /* Pods_iOSTechnicalTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5344EDE02CD84DFE78E866FB /* Pods_iOSTechnicalTest.framework */; };
 		C9036EB121BF9AB500E432BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9036EB021BF9AB500E432BB /* AppDelegate.swift */; };
 		C9036EB321BF9AB500E432BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9036EB221BF9AB500E432BB /* ViewController.swift */; };
@@ -33,6 +35,8 @@
 		3EB6F0422338E9D9000E53B3 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		3EB6F0442338E9E9000E53B3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3EE0A994233A153F005CFE0D /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EE0A997233A34C3005CFE0D /* VideoPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPreviewViewModel.swift; sourceTree = "<group>"; };
+		3EE0A999233A39AA005CFE0D /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		4F4608E44FC0A7C455E0873F /* Pods-iOSTechnicalTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSTechnicalTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSTechnicalTest/Pods-iOSTechnicalTest.debug.xcconfig"; sourceTree = "<group>"; };
 		5344EDE02CD84DFE78E866FB /* Pods_iOSTechnicalTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSTechnicalTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A6BC2071C170F7D4E49806F /* Pods-iOSTechnicalTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSTechnicalTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSTechnicalTest/Pods-iOSTechnicalTest.release.xcconfig"; sourceTree = "<group>"; };
@@ -73,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				3E56946A233A0686009CAEE9 /* PictureFeedViewModel.swift */,
+				3EE0A997233A34C3005CFE0D /* VideoPreviewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -81,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				3EB6F03B2338E3FA000E53B3 /* CollectionViewCells */,
+				3EE0A999233A39AA005CFE0D /* VideoPlayerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -295,6 +301,7 @@
 				3E5694682339FD1E009CAEE9 /* PictureFeedModel.swift in Sources */,
 				C9873EEC21BF9BAC004674FE /* VideoPreviewViewController.swift in Sources */,
 				3EB6F03F2338E451000E53B3 /* Extensions.swift in Sources */,
+				3EE0A998233A34C3005CFE0D /* VideoPreviewViewModel.swift in Sources */,
 				3EB6F03D2338E40B000E53B3 /* PictureFeedCollectionViewCell.swift in Sources */,
 				C9036EB321BF9AB500E432BB /* ViewController.swift in Sources */,
 				C9036EB121BF9AB500E432BB /* AppDelegate.swift in Sources */,
@@ -302,6 +309,7 @@
 				3EB6F0432338E9D9000E53B3 /* APIManager.swift in Sources */,
 				3EB6F0452338E9E9000E53B3 /* Constants.swift in Sources */,
 				3E56946B233A0686009CAEE9 /* PictureFeedViewModel.swift in Sources */,
+				3EE0A99A233A39AA005CFE0D /* VideoPlayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

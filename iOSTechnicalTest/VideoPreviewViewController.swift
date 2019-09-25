@@ -9,13 +9,22 @@
 import UIKit
 
 class VideoPreviewViewController: UIViewController {
-
+    @IBOutlet weak var videoPlayerView: VideoPlayerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+      
+        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard let path = Bundle.main.path(forResource: "Movie", ofType:"mp4") else {
+            debugPrint("Movie.mp4 not found")
+            return
+        }
+        videoPlayerView.configure(url: path)
+    }
 
     /*
     // MARK: - Navigation
