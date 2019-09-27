@@ -58,6 +58,18 @@ class VideoPlayerView: UIView {
         player?.play()
     }
     
+    func playPause() {
+        player?.isPlaying ?? true ? pause() : play()
+    }
+    
+    func play() {
+        player?.play()
+    }
+    
+    func pause() {
+        player?.pause()
+    }
+    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "currentItem.loadedTimeRanges" {
             if let duration = player?.currentItem?.duration {
@@ -81,5 +93,11 @@ class VideoPlayerView: UIView {
                 
             })
         }
+    }
+}
+
+extension AVPlayer {
+    var isPlaying: Bool {
+        return rate != 0 && error == nil
     }
 }

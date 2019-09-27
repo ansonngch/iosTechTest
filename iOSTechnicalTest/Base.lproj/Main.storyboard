@@ -169,19 +169,33 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xrv-Ck-z36">
                                 <rect key="frame" x="164.5" y="290" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="btnPlayTapped:" destination="fJn-gB-ych" eventType="touchUpInside" id="bla-rd-2hW"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdz-Vm-JeE">
+                                <rect key="frame" x="10" y="351" width="355" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Xrv-Ck-z36" firstAttribute="centerX" secondItem="knf-BT-mjv" secondAttribute="centerX" id="5AM-UI-035"/>
                             <constraint firstItem="1zW-y0-IFH" firstAttribute="top" secondItem="MGT-dM-Oe9" secondAttribute="top" id="8hf-MH-gAw"/>
+                            <constraint firstItem="fdz-Vm-JeE" firstAttribute="top" secondItem="Xrv-Ck-z36" secondAttribute="bottom" constant="31" id="IWc-lg-Csl"/>
                             <constraint firstItem="MGT-dM-Oe9" firstAttribute="trailing" secondItem="1zW-y0-IFH" secondAttribute="trailing" id="PL1-5f-sEW"/>
+                            <constraint firstItem="fdz-Vm-JeE" firstAttribute="centerX" secondItem="Xrv-Ck-z36" secondAttribute="centerX" id="RJs-rf-Gnb"/>
                             <constraint firstItem="Xrv-Ck-z36" firstAttribute="top" secondItem="1zW-y0-IFH" secondAttribute="bottom" constant="15" id="gnr-Zt-kQb"/>
                             <constraint firstItem="1zW-y0-IFH" firstAttribute="leading" secondItem="MGT-dM-Oe9" secondAttribute="leading" id="oUE-uZ-voi"/>
+                            <constraint firstItem="fdz-Vm-JeE" firstAttribute="leading" secondItem="MGT-dM-Oe9" secondAttribute="leading" constant="10" id="vAB-rb-neK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MGT-dM-Oe9"/>
                     </view>
                     <connections>
+                        <outlet property="btnPlay" destination="Xrv-Ck-z36" id="bR0-F8-KGc"/>
+                        <outlet property="lblProgress" destination="fdz-Vm-JeE" id="Luz-hY-yF1"/>
                         <outlet property="videoPlayerView" destination="1zW-y0-IFH" id="OtJ-Il-mZf"/>
                     </connections>
                 </viewController>

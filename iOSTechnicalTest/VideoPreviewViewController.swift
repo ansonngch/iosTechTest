@@ -8,13 +8,20 @@
 
 import UIKit
 
+protocol DownloadDelegate: class {
+    func downloadProgressUpdate(for progress: Float)
+}
+
 class VideoPreviewViewController: UIViewController {
     @IBOutlet weak var videoPlayerView: VideoPlayerView!
+    @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var lblProgress: UILabel!
+    
+    let viewModel = VideoPreviewViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        
+        setupView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -26,14 +33,25 @@ class VideoPreviewViewController: UIViewController {
         videoPlayerView.configure(url: path)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupView() {
+        btnPlay.layer.cornerRadius = 8
+        btnPlay.clipsToBounds = true
+        btnPlay.backgroundColor = .red
+        btnPlay.setTitle("Start", for: .normal)
+        btnPlay.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        btnPlay.setTitleColor(UIColor.white, for: .normal)
+        btnPlay.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
-    */
+    
+    @IBAction func btnPlayTapped(_ sender: Any) {
+        videoPlayerView.playPause()
+    }
+}
 
+
+
+extension VideoPreviewViewController: DownloadDelegate {
+    func downloadProgressUpdate(for progress: Float) {
+        
+    }
 }
