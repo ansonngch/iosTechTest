@@ -22,15 +22,16 @@ class VideoPreviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        
+        viewModel.videoMerged = {[weak self] (url) in
+            DispatchQueue.main.async {
+                self?.videoPlayerView.configure(url: url)
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard let path = Bundle.main.path(forResource: "Movie", ofType:"mp4") else {
-            debugPrint("Movie.mp4 not found")
-            return
-        }
-        videoPlayerView.configure(url: path)
     }
 
     func setupView() {
@@ -44,14 +45,18 @@ class VideoPreviewViewController: UIViewController {
     }
     
     @IBAction func btnPlayTapped(_ sender: Any) {
-        videoPlayerView.playPause()
+        
+        let url = URL(string: "https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview122/v4/8a/dd/1f/8add1f4d-142c-1317-250d-ff6370962fb8/mzaf_7601694821840779604.plus.aac.p.m4a")
+        if let url = url {
+            let file = URLFile(previewURL: url)
+            viewModel.downloadFile(url: file)
+        }
     }
 }
-
-
 
 extension VideoPreviewViewController: DownloadDelegate {
     func downloadProgressUpdate(for progress: Float) {
         
     }
 }
+
