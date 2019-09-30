@@ -23,7 +23,11 @@ class VideoPlayerView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
     func configure(url: URL) {
         player = AVPlayer(url: url)
         playerLayer = AVPlayerLayer(player: player)
@@ -31,15 +35,15 @@ class VideoPlayerView: UIView {
         
         if let playerLayer = self.playerLayer {
             layer.addSublayer(playerLayer)
+            overlayView.backgroundColor = UIColor.white.withAlphaComponent(0.2)
+            overlayView.isHidden = false
+            bringSubviewToFront(overlayView)
         }
         
         player?.addObserver(self,
                             forKeyPath: "currentItem.loadedTimeRanges",
                             options: .new ,
                             context: nil)
-        
-        overlayView.backgroundColor = UIColor.white.withAlphaComponent(0.2)
-        bringSubviewToFront(overlayView)
 
         let interval = CMTime(seconds: 1, preferredTimescale: 2)
         player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using: { (time) in
@@ -65,6 +69,11 @@ class VideoPlayerView: UIView {
     
     func pause() {
         player?.pause()
+    }
+    
+    func stop() {
+        player?.seek(to: CMTime.zero)
+        pause()
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

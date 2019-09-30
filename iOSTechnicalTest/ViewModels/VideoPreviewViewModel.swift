@@ -21,36 +21,39 @@ class VideoPreviewViewModel: NSObject {
                           delegateQueue: nil)
     }()
     
+    var track: URLFile?
+    
     /// Get local file path: download task stores tune here; AV player plays it.
     let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
     var activeDownloads: [URL: Download] = [:]
-    
     var videoMerged: ((_ video: URL) -> Void)?
+    var downloadProgress: ((_ progress: Float, _ totalSize: String) -> Void)?
+    
     
     func localFilePath(for url: URL) -> URL {
         return documentsPath.appendingPathComponent(url.lastPathComponent)
     }
     
-    func downloadFile(url: URLFile) {
-        let download = Download(track: url)
-        // 2
-        download.task = downloadsSession.downloadTask(with: url.previewURL)
-        // 3
-        download.task?.resume()
-        // 4
-        download.isDownloading = true
-        // 5
-        activeDownloads[url.previewURL] = download
+    func downloadFile() {
+        let url = URL(string: "https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview122/v4/8a/dd/1f/8add1f4d-142c-1317-250d-ff6370962fb8/mzaf_7601694821840779604.plus.aac.p.m4a")
+        if let url = url {
+            self.track = URLFile(previewURL: url)
+            
+            if let track = track {
+                let download = Download(track: track)
+                // 2
+                download.task = downloadsSession.downloadTask(with: track.previewURL)
+                // 3
+                download.task?.resume()
+                // 4
+                download.isDownloading = true
+                // 5
+                activeDownloads[track.previewURL] = download
+            }
+        }
     }
     
-    /// Merges video and sound while keeping sound of the video too
-    ///
-    /// - Parameters:
-    ///   - videoUrl: URL to video file
-    ///   - audioUrl: URL to audio file
-    ///   - shouldFlipHorizontally: pass True if video was recorded using frontal camera otherwise pass False
-    ///   - completion: completion of saving: error or url with final video
     func mergeVideoAndAudio(videoUrl: URL,
                             audioUrl: URL,
                             shouldFlipHorizontally: Bool = false,
@@ -185,8 +188,6 @@ extension VideoPreviewViewModel: URLSessionDownloadDelegate {
                 }
             }
             
-            
-            
         } catch let error {
             print("Could not copy file to disk: \(error.localizedDescription)")
         }
@@ -194,5 +195,19 @@ extension VideoPreviewViewModel: URLSessionDownloadDelegate {
     
     func prepareToMerge() {
         
+    }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        
+        guard let url = downloadTask.originalRequest?.url,
+            let download = activeDownloads[url] else { return }
+        
+        download.progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+        
+        let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
+        
+        DispatchQueue.main.async {
+            self.downloadProgress?(download.progress, totalSize)
+        }
     }
 }
